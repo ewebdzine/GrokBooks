@@ -1,0 +1,20 @@
+# Local project id for the Supabase CLI. This is not a hosted project ref.
+project_id = "grokbooks"
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+# invoice-pdf is an internal renderer. The gateway checks the JWT, and the
+# function also requires the service_role role.
+[functions.invoice-pdf]
+verify_jwt = true
+
+# Public customer link and Pay Now redirect. The unguessable token is the credential.
+[functions.invoice-view]
+verify_jwt = false
+
+# Stripe calls this endpoint and cannot send a Supabase JWT. The function checks
+# the Stripe signature against the Vault webhook secrets.
+[functions.stripe-webhook]
+verify_jwt = false

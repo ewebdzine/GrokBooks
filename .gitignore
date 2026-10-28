@@ -1,0 +1,19 @@
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Supabase CLI local state
+supabase/.temp/
+supabase/.branches/
+.supabase/
+
+# Local runtimes
+node_modules/
+deno.lock
+.deno/
+
+# Editor and OS
+.DS_Store
+*.log
